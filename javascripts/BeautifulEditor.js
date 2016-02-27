@@ -33,6 +33,21 @@
         this.contentDocument.designMode           = 'on';
     }
 
+    /**
+     * This method adds event listener for bold.
+     * @param {EventTarget} eventTarget This argument is the instance of EventTarget.
+     * @param {string} eventType This argument is string for event type.
+     */
+    BeautifulEditor.prototype.bold = function(eventTarget, eventType) {
+        var self = this;
+
+        if (eventTarget instanceof EventTarget) {
+            eventTarget.addEventListener(String(eventType), function(event) {
+                self.contentDocument.execCommand('bold', false, null);
+            }, false);
+        }
+    };
+
     // Export
     global.BeautifulEditor = BeautifulEditor;
 
