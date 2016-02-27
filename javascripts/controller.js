@@ -11,6 +11,7 @@
             return;
         }
 
+        beautifulEditor.bold(document.getElementById('button-bold'), 'click');
     }, true);
 
 })();
