@@ -12,6 +12,7 @@
         }
 
         beautifulEditor.bold(document.getElementById('button-bold'), 'click');
+        beautifulEditor.italic(document.getElementById('button-italic'), 'click');
     }, true);
 
 })();
