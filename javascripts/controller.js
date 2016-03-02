@@ -14,6 +14,7 @@
         beautifulEditor.bold(document.getElementById('button-bold'), 'click');
         beautifulEditor.italic(document.getElementById('button-italic'), 'click');
         beautifulEditor.underline(document.getElementById('button-underline'), 'click');
+        beautifulEditor.strikeThrough(document.getElementById('button-strike-through'), 'click');
     }, true);
 
 })();
