@@ -16,6 +16,7 @@
         beautifulEditor.underline(document.getElementById('button-underline'), 'click');
         beautifulEditor.strikeThrough(document.getElementById('button-strike-through'), 'click');
         beautifulEditor.subscript(document.getElementById('button-subscript'), 'click');
+        beautifulEditor.superscript(document.getElementById('button-superscript'), 'click');
     }, true);
 
 })();
