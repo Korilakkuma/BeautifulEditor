@@ -19,6 +19,7 @@
         beautifulEditor.superscript(document.getElementById('button-superscript'), 'click');
         beautifulEditor.indent(document.getElementById('button-indent'), 'click');
         beautifulEditor.outdent(document.getElementById('button-outdent'), 'click');
+        beautifulEditor.insertOrderedList(document.getElementById('button-ordered-list'), 'click');
     }, true);
 
 })();
