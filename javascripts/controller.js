@@ -20,6 +20,7 @@
         beautifulEditor.indent(document.getElementById('button-indent'), 'click');
         beautifulEditor.outdent(document.getElementById('button-outdent'), 'click');
         beautifulEditor.insertOrderedList(document.getElementById('button-ordered-list'), 'click');
+        beautifulEditor.insertUnorderedList(document.getElementById('button-unordered-list'), 'click');
     }, true);
 
 })();
