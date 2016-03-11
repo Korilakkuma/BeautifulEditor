@@ -21,6 +21,7 @@
         beautifulEditor.outdent(document.getElementById('button-outdent'), 'click');
         beautifulEditor.insertOrderedList(document.getElementById('button-ordered-list'), 'click');
         beautifulEditor.insertUnorderedList(document.getElementById('button-unordered-list'), 'click');
+        beautifulEditor.insertParagraph(document.getElementById('button-paragraph'), 'click');
     }, true);
 
 })();
