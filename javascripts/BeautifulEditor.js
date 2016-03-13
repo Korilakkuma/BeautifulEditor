@@ -154,6 +154,21 @@
     };
 
     /**
+     * This method adds event listener for horizontal rule.
+     * @param {EventTarget} eventTarget This argument is the instance of EventTarget.
+     * @param {string} eventType This argument is string for event type.
+     */
+    BeautifulEditor.prototype.insertHorizontalRule = function(eventTarget, eventType) {
+        var self = this;
+
+        if (eventTarget instanceof EventTarget) {
+            eventTarget.addEventListener(String(eventType), function(event) {
+                self.contentDocument.execCommand('insertHorizontalRule', false, null);
+            }, false);
+        }
+    };
+
+    /**
      * This method adds event listener for ordered list.
      * @param {EventTarget} eventTarget This argument is the instance of EventTarget.
      * @param {string} eventType This argument is string for event type.
