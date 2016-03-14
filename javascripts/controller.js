@@ -23,6 +23,7 @@
         beautifulEditor.insertUnorderedList(document.getElementById('button-unordered-list'), 'click');
         beautifulEditor.insertParagraph(document.getElementById('button-paragraph'), 'click');
         beautifulEditor.insertHorizontalRule(document.getElementById('button-horizontal-rule'), 'click');
+        beautifulEditor.justifyCenter(document.getElementById('button-align-center'), 'click');
     }, true);
 
 })();
