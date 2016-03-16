@@ -25,6 +25,7 @@
         beautifulEditor.insertHorizontalRule(document.getElementById('button-horizontal-rule'), 'click');
         beautifulEditor.justifyCenter(document.getElementById('button-align-center'), 'click');
         beautifulEditor.justifyFull(document.getElementById('button-align-justify'), 'click');
+        beautifulEditor.justifyLeft(document.getElementById('button-align-left'), 'click');
     }, true);
 
 })();
