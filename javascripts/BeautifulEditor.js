@@ -243,6 +243,21 @@
         }
     };
 
+    /**
+     * This method adds event listener for alignment in left.
+     * @param {EventTarget} eventTarget This argument is the instance of EventTarget.
+     * @param {string} eventType This argument is string for event type.
+     */
+    BeautifulEditor.prototype.justifyLeft = function(eventTarget, eventType) {
+        var self = this;
+
+        if (eventTarget instanceof EventTarget) {
+            eventTarget.addEventListener(String(eventType), function(event) {
+                self.contentDocument.execCommand('justifyLeft', false, null);
+            }, false);
+        }
+    };
+
     // Export
     global.BeautifulEditor = BeautifulEditor;
 
