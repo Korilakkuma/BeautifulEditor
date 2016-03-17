@@ -258,6 +258,21 @@
         }
     };
 
+    /**
+     * This method adds event listener for alignment in right.
+     * @param {EventTarget} eventTarget This argument is the instance of EventTarget.
+     * @param {string} eventType This argument is string for event type.
+     */
+    BeautifulEditor.prototype.justifyRight = function(eventTarget, eventType) {
+        var self = this;
+
+        if (eventTarget instanceof EventTarget) {
+            eventTarget.addEventListener(String(eventType), function(event) {
+                self.contentDocument.execCommand('justifyRight', false, null);
+            }, false);
+        }
+    };
+
     // Export
     global.BeautifulEditor = BeautifulEditor;
 
