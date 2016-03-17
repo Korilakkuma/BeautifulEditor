@@ -26,6 +26,7 @@
         beautifulEditor.justifyCenter(document.getElementById('button-align-center'), 'click');
         beautifulEditor.justifyFull(document.getElementById('button-align-justify'), 'click');
         beautifulEditor.justifyLeft(document.getElementById('button-align-left'), 'click');
+        beautifulEditor.justifyRight(document.getElementById('button-align-right'), 'click');
     }, true);
 
 })();
