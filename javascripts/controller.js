@@ -12,6 +12,7 @@
         }
 
         beautifulEditor.foreColor(document.getElementById('color-fore-color'), 'change');
+        beautifulEditor.backColor(document.getElementById('color-back-color'), 'change');
         beautifulEditor.bold(document.getElementById('button-bold'), 'click');
         beautifulEditor.italic(document.getElementById('button-italic'), 'click');
         beautifulEditor.underline(document.getElementById('button-underline'), 'click');
