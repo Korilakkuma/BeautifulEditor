@@ -64,6 +64,21 @@
     };
 
     /**
+     * This method adds event listener for font name.
+     * @param {EventTarget} eventTarget This argument is the instance of EventTarget.
+     * @param {string} eventType This argument is string for event type.
+     */
+    BeautifulEditor.prototype.fontName = function(eventTarget, eventType) {
+        var self = this;
+
+        if (eventTarget instanceof EventTarget) {
+            eventTarget.addEventListener(String(eventType), function(event) {
+                self.contentDocument.execCommand('fontName', false, this.value);
+            }, false);
+        }
+    };
+
+    /**
      * This method adds event listener for bold.
      * @param {EventTarget} eventTarget This argument is the instance of EventTarget.
      * @param {string} eventType This argument is string for event type.
