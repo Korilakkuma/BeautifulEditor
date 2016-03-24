@@ -79,6 +79,21 @@
     };
 
     /**
+     * This method adds event listener for font size.
+     * @param {EventTarget} eventTarget This argument is the instance of EventTarget.
+     * @param {string} eventType This argument is string for event type.
+     */
+    BeautifulEditor.prototype.fontSize = function(eventTarget, eventType) {
+        var self = this;
+
+        if (eventTarget instanceof EventTarget) {
+            eventTarget.addEventListener(String(eventType), function(event) {
+                self.contentDocument.execCommand('fontSize', false, this.value);
+            }, false);
+        }
+    };
+
+    /**
      * This method adds event listener for bold.
      * @param {EventTarget} eventTarget This argument is the instance of EventTarget.
      * @param {string} eventType This argument is string for event type.
