@@ -31,6 +31,7 @@
         beautifulEditor.justifyFull(document.getElementById('button-align-justify'), 'click');
         beautifulEditor.justifyLeft(document.getElementById('button-align-left'), 'click');
         beautifulEditor.justifyRight(document.getElementById('button-align-right'), 'click');
+        beautifulEditor.removeFormat(document.getElementById('button-remove-format'), 'click');
     }, true);
 
 })();
