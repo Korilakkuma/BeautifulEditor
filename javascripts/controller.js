@@ -33,6 +33,7 @@
         beautifulEditor.justifyRight(document.getElementById('button-align-right'), 'click');
         beautifulEditor.removeFormat(document.getElementById('button-remove-format'), 'click');
         beautifulEditor.copy(document.getElementById('button-copy'), 'click');
+        beautifulEditor.cut(document.getElementById('button-cut'), 'click');
     }, true);
 
 })();
