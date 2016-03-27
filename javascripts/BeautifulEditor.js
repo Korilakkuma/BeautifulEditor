@@ -363,6 +363,21 @@
         }
     };
 
+    /**
+     * This method adds event listener for cut.
+     * @param {EventTarget} eventTarget This argument is the instance of EventTarget.
+     * @param {string} eventType This argument is string for event type.
+     */
+    BeautifulEditor.prototype.cut = function(eventTarget, eventType) {
+        var self = this;
+
+        if (eventTarget instanceof EventTarget) {
+            eventTarget.addEventListener(String(eventType), function(event) {
+                self.contentDocument.execCommand('cut', false, null);
+            }, false);
+        }
+    };
+
     // Export
     global.BeautifulEditor = BeautifulEditor;
 
