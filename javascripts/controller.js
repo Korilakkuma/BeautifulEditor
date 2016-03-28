@@ -34,6 +34,7 @@
         beautifulEditor.removeFormat(document.getElementById('button-remove-format'), 'click');
         beautifulEditor.copy(document.getElementById('button-copy'), 'click');
         beautifulEditor.cut(document.getElementById('button-cut'), 'click');
+        beautifulEditor.paste(document.getElementById('button-paste'), 'click');
     }, true);
 
 })();
