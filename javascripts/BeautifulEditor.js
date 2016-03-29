@@ -31,7 +31,45 @@
 
         this.contentDocument.body.contentEditable = true;
         this.contentDocument.designMode           = 'on';
+
+        this.histories      = [];
+        this.historyPointer = 0;
+
+        this.histories[this.historyPointer] = this.contentDocument.body.outerHTML;
     }
+
+    /**
+     * This method pushes history.
+     */
+    BeautifulEditor.prototype.pushHistory = function() {
+        this.histories[++this.historyPointer] = this.contentDocument.body.outerHTML;
+    };
+
+    /**
+     * This method adds event listener for undo.
+     * @param {EventTarget} eventTarget This argument is the instance of EventTarget.
+     * @param {string} eventType This argument is string for event type.
+     * @param {function} callback This argument is invoked when undo failed.
+     */
+    BeautifulEditor.prototype.undo = function(eventTarget, eventType, callback) {
+        var self = this;
+
+        if (eventTarget instanceof EventTarget) {
+            eventTarget.addEventListener(String(eventType), function(event) {
+                if (self.historyPointer === (self.histories.length - 1)) {
+                    self.histories[self.historyPointer + 1] = self.contentDocument.body.outerHTML;
+                }
+
+                if (self.historyPointer > 0) {
+                    self.contentDocument.body.outerHTML = self.histories[--self.historyPointer];
+                } else {
+                    if (Object.prototype.toString.call(callback) === '[object Function]') {
+                        callback();
+                    }
+                }
+            }, false);
+        }
+    };
 
     /**
      * This method adds event listener for fore color.
@@ -44,6 +82,7 @@
         if (eventTarget instanceof EventTarget) {
             eventTarget.addEventListener(String(eventType), function(event) {
                 self.contentDocument.execCommand('foreColor', false, this.value);
+                self.pushHistory();
             }, false);
         }
     };
@@ -59,6 +98,7 @@
         if (eventTarget instanceof EventTarget) {
             eventTarget.addEventListener(String(eventType), function(event) {
                 self.contentDocument.execCommand('backColor', false, this.value);
+                self.pushHistory();
             }, false);
         }
     };
@@ -74,6 +114,7 @@
         if (eventTarget instanceof EventTarget) {
             eventTarget.addEventListener(String(eventType), function(event) {
                 self.contentDocument.execCommand('fontName', false, this.value);
+                self.pushHistory();
             }, false);
         }
     };
@@ -89,6 +130,7 @@
         if (eventTarget instanceof EventTarget) {
             eventTarget.addEventListener(String(eventType), function(event) {
                 self.contentDocument.execCommand('fontSize', false, this.value);
+                self.pushHistory();
             }, false);
         }
     };
@@ -104,6 +146,7 @@
         if (eventTarget instanceof EventTarget) {
             eventTarget.addEventListener(String(eventType), function(event) {
                 self.contentDocument.execCommand('bold', false, null);
+                self.pushHistory();
             }, false);
         }
     };
@@ -119,6 +162,7 @@
         if (eventTarget instanceof EventTarget) {
             eventTarget.addEventListener(String(eventType), function(event) {
                 self.contentDocument.execCommand('italic', false, null);
+                self.pushHistory();
             }, false);
         }
     };
@@ -134,6 +178,7 @@
         if (eventTarget instanceof EventTarget) {
             eventTarget.addEventListener(String(eventType), function(event) {
                 self.contentDocument.execCommand('underline', false, null);
+                self.pushHistory();
             }, false);
         }
     };
@@ -149,6 +194,7 @@
         if (eventTarget instanceof EventTarget) {
             eventTarget.addEventListener(String(eventType), function(event) {
                 self.contentDocument.execCommand('strikeThrough', false, null);
+                self.pushHistory();
             }, false);
         }
     };
@@ -164,6 +210,7 @@
         if (eventTarget instanceof EventTarget) {
             eventTarget.addEventListener(String(eventType), function(event) {
                 self.contentDocument.execCommand('subscript', false, null);
+                self.pushHistory();
             }, false);
         }
     };
@@ -179,6 +226,7 @@
         if (eventTarget instanceof EventTarget) {
             eventTarget.addEventListener(String(eventType), function(event) {
                 self.contentDocument.execCommand('superscript', false, null);
+                self.pushHistory();
             }, false);
         }
     };
@@ -194,6 +242,7 @@
         if (eventTarget instanceof EventTarget) {
             eventTarget.addEventListener(String(eventType), function(event) {
                 self.contentDocument.execCommand('indent', false, null);
+                self.pushHistory();
             }, false);
         }
     };
@@ -209,6 +258,7 @@
         if (eventTarget instanceof EventTarget) {
             eventTarget.addEventListener(String(eventType), function(event) {
                 self.contentDocument.execCommand('outdent', false, null);
+                self.pushHistory();
             }, false);
         }
     };
@@ -224,6 +274,7 @@
         if (eventTarget instanceof EventTarget) {
             eventTarget.addEventListener(String(eventType), function(event) {
                 self.contentDocument.execCommand('insertHorizontalRule', false, null);
+                self.pushHistory();
             }, false);
         }
     };
@@ -239,6 +290,7 @@
         if (eventTarget instanceof EventTarget) {
             eventTarget.addEventListener(String(eventType), function(event) {
                 self.contentDocument.execCommand('insertOrderedList', false, null);
+                self.pushHistory();
             }, false);
         }
     };
@@ -254,6 +306,7 @@
         if (eventTarget instanceof EventTarget) {
             eventTarget.addEventListener(String(eventType), function(event) {
                 self.contentDocument.execCommand('insertUnorderedList', false, null);
+                self.pushHistory();
             }, false);
         }
     };
@@ -269,6 +322,7 @@
         if (eventTarget instanceof EventTarget) {
             eventTarget.addEventListener(String(eventType), function(event) {
                 self.contentDocument.execCommand('insertParagraph', false, null);
+                self.pushHistory();
             }, false);
         }
     };
@@ -284,6 +338,7 @@
         if (eventTarget instanceof EventTarget) {
             eventTarget.addEventListener(String(eventType), function(event) {
                 self.contentDocument.execCommand('justifyCenter', false, null);
+                self.pushHistory();
             }, false);
         }
     };
@@ -299,6 +354,7 @@
         if (eventTarget instanceof EventTarget) {
             eventTarget.addEventListener(String(eventType), function(event) {
                 self.contentDocument.execCommand('justifyFull', false, null);
+                self.pushHistory();
             }, false);
         }
     };
@@ -314,6 +370,7 @@
         if (eventTarget instanceof EventTarget) {
             eventTarget.addEventListener(String(eventType), function(event) {
                 self.contentDocument.execCommand('justifyLeft', false, null);
+                self.pushHistory();
             }, false);
         }
     };
@@ -329,6 +386,7 @@
         if (eventTarget instanceof EventTarget) {
             eventTarget.addEventListener(String(eventType), function(event) {
                 self.contentDocument.execCommand('justifyRight', false, null);
+                self.pushHistory();
             }, false);
         }
     };
@@ -344,6 +402,7 @@
         if (eventTarget instanceof EventTarget) {
             eventTarget.addEventListener(String(eventType), function(event) {
                 self.contentDocument.execCommand('removeFormat', false, null);
+                self.pushHistory();
             }, false);
         }
     };
@@ -359,6 +418,7 @@
         if (eventTarget instanceof EventTarget) {
             eventTarget.addEventListener(String(eventType), function(event) {
                 self.contentDocument.execCommand('copy', false, null);
+                self.pushHistory();
             }, false);
         }
     };
@@ -374,6 +434,7 @@
         if (eventTarget instanceof EventTarget) {
             eventTarget.addEventListener(String(eventType), function(event) {
                 self.contentDocument.execCommand('cut', false, null);
+                self.pushHistory();
             }, false);
         }
     };
@@ -389,6 +450,7 @@
         if (eventTarget instanceof EventTarget) {
             eventTarget.addEventListener(String(eventType), function(event) {
                 self.contentDocument.execCommand('paste', false, null);
+                self.pushHistory();
             }, false);
         }
     };
