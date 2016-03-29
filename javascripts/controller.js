@@ -11,6 +11,9 @@
             return;
         }
 
+        beautifulEditor.undo(document.getElementById('button-undo'), 'click', function() {
+            window.alert('Cannot Undo');
+        });
         beautifulEditor.foreColor(document.getElementById('color-fore-color'), 'change');
         beautifulEditor.backColor(document.getElementById('color-back-color'), 'change');
         beautifulEditor.fontName(document.getElementById('select-font-name'), 'change');
