@@ -43,6 +43,10 @@
      */
     BeautifulEditor.prototype.pushHistory = function() {
         this.histories[++this.historyPointer] = this.contentDocument.body.outerHTML;
+
+        if (this.historyPointer < (this.histories.length - 1)) {
+            this.histories = this.histories.slice(0, (this.historyPointer + 1));
+        }
     };
 
     /**
@@ -62,6 +66,28 @@
 
                 if (self.historyPointer > 0) {
                     self.contentDocument.body.outerHTML = self.histories[--self.historyPointer];
+                } else {
+                    if (Object.prototype.toString.call(callback) === '[object Function]') {
+                        callback();
+                    }
+                }
+            }, false);
+        }
+    };
+
+    /**
+     * This method adds event listener for redo.
+     * @param {EventTarget} eventTarget This argument is the instance of EventTarget.
+     * @param {string} eventType This argument is string for event type.
+     * @param {function} callback This argument is invoked when redo failed.
+     */
+    BeautifulEditor.prototype.redo = function(eventTarget, eventType, callback) {
+        var self = this;
+
+        if (eventTarget instanceof EventTarget) {
+            eventTarget.addEventListener(String(eventType), function(event) {
+                if (self.historyPointer < (self.histories.length - 2)) {
+                    self.contentDocument.body.outerHTML = self.histories[++self.historyPointer];
                 } else {
                     if (Object.prototype.toString.call(callback) === '[object Function]') {
                         callback();
