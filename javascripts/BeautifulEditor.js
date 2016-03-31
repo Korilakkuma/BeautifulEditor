@@ -32,11 +32,60 @@
         this.contentDocument.body.contentEditable = true;
         this.contentDocument.designMode           = 'on';
 
+        this.range = {
+            'startContainer': null,
+            'startOffset'   : 0,
+            'endContainer'  : null,
+            'endOffset'     : 0
+        };
+
         this.histories      = [];
         this.historyPointer = 0;
 
         this.histories[this.historyPointer] = this.contentDocument.body.outerHTML;
     }
+
+    /**
+     * This method is getter for the instance of Selection.
+     * @return {Selection} This is returned as the instance of Selection.
+     */
+    BeautifulEditor.prototype.getSelection = function() {
+        return this.contentWindow.getSelection();
+    };
+
+    /**
+     * This method is getter for the instance of Range.
+     * @param {number} index This argument is in order to specify index of the selected range.
+     * @return {Range} This is returned as the instance of Range.
+     */
+    BeautifulEditor.prototype.getRange = function(index) {
+        var i = parseInt(index);
+
+        var selection = this.contentWindow.getSelection();
+
+        if ((i >= 0) && (i < selection.rangeCount)) {
+            return selection.getRangeAt(i);
+        }
+
+        return null;
+    };
+
+    /**
+     * This method holds range.
+     * @param {number} index This argument is in order to specify index of the selected range.
+     */
+    BeautifulEditor.prototype.holdRange = function(index) {
+        var range = this.getRange(index);
+
+        if (range === null) {
+            return;
+        }
+
+        this.range.startContainer = range.startContainer;
+        this.range.startOffset    = range.startOffset;
+        this.range.endContainer   = range.endContainer;
+        this.range.endOffset      = range.endOffset;
+    };
 
     /**
      * This method surround the selected range by tag.
