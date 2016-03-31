@@ -39,6 +39,29 @@
     }
 
     /**
+     * This method surround the selected range by tag.
+     * @param {string} tag This argument is tag string.
+     * @return {Element|null} This is returned as the instance of Element or null.
+     */
+    BeautifulEditor.prototype.surround = function(tag) {
+        var selection = this.contentWindow.getSelection();
+
+        if (selection.rangeCount > 0) {
+            var range            = selection.getRangeAt(0);
+            var element          = document.createElement(tag);
+            var documentFragment = range.extractContents();
+
+            element.appendChild(documentFragment);
+
+            range.insertNode(element);
+
+            return element;
+        }
+
+        return null;
+    };
+
+    /**
      * This method pushes history.
      */
     BeautifulEditor.prototype.pushHistory = function() {
