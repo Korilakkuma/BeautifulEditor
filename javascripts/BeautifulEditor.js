@@ -88,6 +88,23 @@
     };
 
     /**
+     * This method reverts range.
+     */
+    BeautifulEditor.prototype.revertRange = function() {
+        var range = this.contentDocument.createRange();
+
+        if ((this.range.startContainer !== null) && (this.range.endContainer !== null)) {
+            range.setStart(this.range.startContainer, this.range.startOffset);
+            range.setEnd(this.range.endContainer, this.range.endOffset);
+
+            var selection = this.getSelection();
+
+            selection.removeAllRanges();
+            selection.addRange(range);
+        }
+    };
+
+    /**
      * This method surround the selected range by tag.
      * @param {string} tag This argument is tag string.
      * @return {Element|null} This is returned as the instance of Element or null.
