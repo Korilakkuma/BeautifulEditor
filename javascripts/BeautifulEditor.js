@@ -443,6 +443,29 @@
     };
 
     /**
+     * This method adds event listener for link.
+     * @param {EventTarget} eventTarget This argument is the instance of EventTarget.
+     * @param {string} eventType This argument is string for event type.
+     * @param {HTMLInputElement} htmlInputElement This argument is in order to get URL.
+     */
+    BeautifulEditor.prototype.createLink = function(eventTarget, eventType, htmlInputElement) {
+        var self = this;
+
+        if ((eventTarget instanceof EventTarget) && (htmlInputElement instanceof HTMLInputElement)) {
+            eventTarget.addEventListener(String(eventType), function(event) {
+                var a = self.surround('a');
+
+                if (a !== null) {
+                    a.setAttribute('href',   htmlInputElement.value);
+                    a.setAttribute('target', '_blank');
+                }
+
+                self.pushHistory();
+            }, false);
+        }
+    };
+
+    /**
      * This method adds event listener for alignment in center.
      * @param {EventTarget} eventTarget This argument is the instance of EventTarget.
      * @param {string} eventType This argument is string for event type.
