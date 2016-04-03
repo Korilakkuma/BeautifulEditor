@@ -33,6 +33,7 @@
         beautifulEditor.insertUnorderedList(document.getElementById('button-unordered-list'), 'click');
         beautifulEditor.insertParagraph(document.getElementById('button-paragraph'), 'click');
         beautifulEditor.insertHorizontalRule(document.getElementById('button-horizontal-rule'), 'click');
+        beautifulEditor.createLink(document.getElementById('button-link'), 'click', document.querySelector('[type="url"]'));
         beautifulEditor.justifyCenter(document.getElementById('button-align-center'), 'click');
         beautifulEditor.justifyFull(document.getElementById('button-align-justify'), 'click');
         beautifulEditor.justifyLeft(document.getElementById('button-align-left'), 'click');
