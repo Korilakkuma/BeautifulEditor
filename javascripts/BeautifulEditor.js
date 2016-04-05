@@ -466,6 +466,22 @@
     };
 
     /**
+     * This method adds event listener for unlink.
+     * @param {EventTarget} eventTarget This argument is the instance of EventTarget.
+     * @param {string} eventType This argument is string for event type.
+     */
+    BeautifulEditor.prototype.unlink = function(eventTarget, eventType) {
+        var self = this;
+
+        if (eventTarget instanceof EventTarget) {
+            eventTarget.addEventListener(String(eventType), function(event) {
+                self.contentDocument.execCommand('unlink', false, null);
+                self.pushHistory();
+            }, false);
+        }
+    };
+
+    /**
      * This method adds event listener for alignment in center.
      * @param {EventTarget} eventTarget This argument is the instance of EventTarget.
      * @param {string} eventType This argument is string for event type.
