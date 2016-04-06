@@ -43,6 +43,27 @@
         beautifulEditor.copy(document.getElementById('button-copy'), 'click');
         beautifulEditor.cut(document.getElementById('button-cut'), 'click');
         beautifulEditor.paste(document.getElementById('button-paste'), 'click');
+
+        document.querySelector('[type="file"').addEventListener('change', function(event) {
+            var file = event.target.files[0];
+
+            if (!(file instanceof Blob)) {
+                window.alert('Please Upload File');
+            } else if (file.type.indexOf('image') === -1) {
+                window.alert('Please Upload Image File');
+            } else {
+                var reader = new FileReader();
+
+                reader.onload = function() {
+                    beautifulEditor.insertImage(this.result);
+
+                    event.target.value = '';
+                };
+
+                reader.readAsDataURL(file);
+            }
+        }, false);
+
     }, true);
 
 })();
