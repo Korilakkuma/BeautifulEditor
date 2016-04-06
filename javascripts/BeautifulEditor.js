@@ -443,6 +443,15 @@
     };
 
     /**
+     * This method inserts image.
+     * @param {string} src This argument is one of path, Data URL, Object URL.
+     */
+    BeautifulEditor.prototype.insertImage = function(src) {
+        this.contentDocument.execCommand('insertImage', false, String(src));
+        this.pushHistory();
+    };
+
+    /**
      * This method adds event listener for link.
      * @param {EventTarget} eventTarget This argument is the instance of EventTarget.
      * @param {string} eventType This argument is string for event type.
