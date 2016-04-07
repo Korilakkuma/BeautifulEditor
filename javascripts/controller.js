@@ -43,6 +43,7 @@
         beautifulEditor.copy(document.getElementById('button-copy'), 'click');
         beautifulEditor.cut(document.getElementById('button-cut'), 'click');
         beautifulEditor.paste(document.getElementById('button-paste'), 'click');
+        beautifulEditor.selectAll(document.getElementById('button-select'), 'click');
 
         document.querySelector('[type="file"').addEventListener('change', function(event) {
             var file = event.target.files[0];
