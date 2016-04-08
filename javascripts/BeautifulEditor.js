@@ -443,6 +443,15 @@
     };
 
     /**
+     * This method inserts HTML.
+     * @param {string} html This argument is string as HTML.
+     */
+    BeautifulEditor.prototype.insertHTML = function(html) {
+        this.contentDocument.execCommand('insertHTML', false, String(html));
+        this.pushHistory();
+    };
+
+    /**
      * This method inserts image.
      * @param {string} src This argument is one of path, Data URL, Object URL.
      */
