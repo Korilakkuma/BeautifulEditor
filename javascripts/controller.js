@@ -31,6 +31,7 @@
         beautifulEditor.outdent(document.getElementById('button-outdent'), 'click');
         beautifulEditor.insertOrderedList(document.getElementById('button-ordered-list'), 'click');
         beautifulEditor.insertUnorderedList(document.getElementById('button-unordered-list'), 'click');
+        beautifulEditor.insertCheckbox(document.getElementById('button-checkbox'), 'click');
         beautifulEditor.insertParagraph(document.getElementById('button-paragraph'), 'click');
         beautifulEditor.insertHorizontalRule(document.getElementById('button-horizontal-rule'), 'click');
         beautifulEditor.createLink(document.getElementById('button-link'), 'click', document.querySelector('[type="url"]'));
