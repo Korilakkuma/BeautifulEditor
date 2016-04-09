@@ -443,6 +443,28 @@
     };
 
     /**
+     * This method adds event listener for inserting checkbox.
+     * @param {EventTarget} eventTarget This argument is the instance of EventTarget.
+     * @param {string} eventType This argument is string for event type.
+     */
+    BeautifulEditor.prototype.insertCheckbox = function(eventTarget, eventType) {
+        var self = this;
+
+        if (eventTarget instanceof EventTarget) {
+            eventTarget.addEventListener(String(eventType), function(event) {
+                var label    = self.surround('label');
+                var checkbox = document.createElement('input');
+
+                checkbox.setAttribute('type', 'checkbox');
+
+                label.insertBefore(checkbox, label.firstChild);
+
+                self.pushHistory();
+            }, false);
+        }
+    };
+
+    /**
      * This method inserts HTML.
      * @param {string} html This argument is string as HTML.
      */
