@@ -664,6 +664,22 @@
         }
     };
 
+    /**
+     * This method adds event listener for deleting.
+     * @param {EventTarget} eventTarget This argument is the instance of EventTarget.
+     * @param {string} eventType This argument is string for event type.
+     */
+    BeautifulEditor.prototype.delete = function(eventTarget, eventType) {
+        var self = this;
+
+        if (eventTarget instanceof EventTarget) {
+            eventTarget.addEventListener(String(eventType), function(event) {
+                self.contentDocument.execCommand('delete', false, null);
+                self.pushHistory();
+            }, false);
+        }
+    };
+
     // Export
     global.BeautifulEditor = BeautifulEditor;
 
