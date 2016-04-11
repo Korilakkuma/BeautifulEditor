@@ -187,6 +187,22 @@
     };
 
     /**
+     * This method adds event listener for background color.
+     * @param {EventTarget} eventTarget This argument is the instance of EventTarget.
+     * @param {string} eventType This argument is string for event type.
+     */
+    BeautifulEditor.prototype.backgroundColor = function(eventTarget, eventType) {
+        var self = this;
+
+        if (eventTarget instanceof EventTarget) {
+            eventTarget.addEventListener(String(eventType), function(event) {
+                self.contentDocument.body.style.backgroundColor = this.value;
+                self.pushHistory();
+            }, false);
+        }
+    };
+
+    /**
      * This method adds event listener for fore color.
      * @param {EventTarget} eventTarget This argument is the instance of EventTarget.
      * @param {string} eventType This argument is string for event type.
