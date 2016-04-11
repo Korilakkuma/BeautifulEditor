@@ -17,6 +17,7 @@
         beautifulEditor.redo(document.getElementById('button-redo'), 'click', function() {
             window.alert('Cannot Redo');
         });
+        beautifulEditor.backgroundColor(document.getElementById('color-background-color'), 'change');
         beautifulEditor.foreColor(document.getElementById('color-fore-color'), 'change');
         beautifulEditor.backColor(document.getElementById('color-back-color'), 'change');
         beautifulEditor.fontName(document.getElementById('select-font-name'), 'change');
