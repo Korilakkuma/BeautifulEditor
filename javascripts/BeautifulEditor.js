@@ -46,6 +46,14 @@
     }
 
     /**
+     * This method is getter for window object of iframe.
+     * @return {Window} This is returned as window object of iframe.
+     */
+    BeautifulEditor.prototype.getWindow = function() {
+        return this.contentWindow;
+    };
+
+    /**
      * This method is getter for the instance of Selection.
      * @return {Selection} This is returned as the instance of Selection.
      */
