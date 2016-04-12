@@ -54,6 +54,14 @@
     };
 
     /**
+     * This method is getter for HTMLDocument of iframe.
+     * @return {HTMLDocument} This is returned as HTMLDocument of iframe.
+     */
+    BeautifulEditor.prototype.getDocument = function() {
+        return this.contentDocument;
+    };
+
+    /**
      * This method is getter for the instance of Selection.
      * @return {Selection} This is returned as the instance of Selection.
      */
