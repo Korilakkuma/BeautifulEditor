@@ -144,6 +144,20 @@
     };
 
     /**
+     * This method is in order to determine whether text is selected.
+     * @return {boolean} If text is selected, this value is true. Otherwise, this value is false.
+     */
+    BeautifulEditor.prototype.isSelected = function() {
+        var range = this.getRange(0);
+
+        if (range === null) {
+            return false;
+        }
+
+        return !range.collapsed;
+    };
+
+    /**
      * This method pushes history.
      */
     BeautifulEditor.prototype.pushHistory = function() {
