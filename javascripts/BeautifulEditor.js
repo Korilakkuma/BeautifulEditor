@@ -158,6 +158,26 @@
     };
 
     /**
+     * This method moves caret.
+     * @param {boolean} isStart This argument is in order to select position of caret.
+     */
+    BeautifulEditor.prototype.moveCaret = function(isStart) {
+        this.contentDocument.execCommand('selectAll', false, null);
+
+        var selection = this.getSelection();
+        var range     = this.getRange(0);
+
+        if (range === null) {
+            return;
+        }
+
+        range.collapse(Boolean(isStart));
+
+        selection.removeAllRanges();
+        selection.addRange(range);
+    };
+
+    /**
      * This method pushes history.
      */
     BeautifulEditor.prototype.pushHistory = function() {
