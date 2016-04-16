@@ -746,6 +746,13 @@
         }
     };
 
+    /**
+     * This method switches to editing by text.
+     */
+    BeautifulEditor.prototype.toText = function() {
+        this.contentDocument.body.textContent = this.contentDocument.body.innerHTML;
+    };
+
     // Export
     global.BeautifulEditor = BeautifulEditor;
 
