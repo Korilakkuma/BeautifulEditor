@@ -68,6 +68,10 @@
             }
         }, false);
 
+        document.getElementById('button-to-html').addEventListener('click', function() {
+            beautifulEditor.toHTML();
+        }, false);
+
         document.getElementById('button-to-text').addEventListener('click', function() {
             beautifulEditor.toText();
         }, false);
