@@ -32,6 +32,8 @@
         this.contentDocument.body.contentEditable = true;
         this.contentDocument.designMode           = 'on';
 
+        this.editMode = BeautifulEditor.EDIT_MODES.HTML;
+
         this.range = {
             'startContainer': null,
             'startOffset'   : 0,
@@ -44,6 +46,13 @@
 
         this.histories[this.historyPointer] = this.contentDocument.body.outerHTML;
     }
+
+    /**
+     * Class (Static) properties
+     */
+    BeautifulEditor.EDIT_MODES      = {};
+    BeautifulEditor.EDIT_MODES.HTML = 'html';
+    BeautifulEditor.EDIT_MODES.TEXT = 'text';
 
     /**
      * This method is getter for window object of iframe.
@@ -747,10 +756,23 @@
     };
 
     /**
+     * This method switches to editing by HTML.
+     */
+    BeautifulEditor.prototype.toHTML = function() {
+        if (this.editMode === BeautifulEditor.EDIT_MODES.TEXT) {
+            this.contentDocument.body.innerHTML = this.contentDocument.body.textContent;
+            this.editMode = BeautifulEditor.EDIT_MODES.HTML;
+        }
+    };
+
+    /**
      * This method switches to editing by text.
      */
     BeautifulEditor.prototype.toText = function() {
-        this.contentDocument.body.textContent = this.contentDocument.body.innerHTML;
+        if (this.editMode === BeautifulEditor.EDIT_MODES.HTML) {
+            this.contentDocument.body.textContent = this.contentDocument.body.innerHTML;
+            this.editMode = BeautifulEditor.EDIT_MODES.TEXT;
+        }
     };
 
     // Export
