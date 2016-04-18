@@ -76,6 +76,10 @@
             beautifulEditor.toText();
         }, false);
 
+        document.getElementById('button-export').addEventListener('click', function() {
+            document.getElementById('export-area').innerHTML = beautifulEditor.export();
+        }, false);
+
     }, true);
 
 })();
