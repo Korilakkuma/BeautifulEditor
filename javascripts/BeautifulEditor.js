@@ -45,6 +45,8 @@
         this.historyPointer = 0;
 
         this.histories[this.historyPointer] = this.contentDocument.body.outerHTML;
+
+        this.currentBackgroundColor = 'rgba(255, 255, 255, 1.0)';
     }
 
     /**
@@ -256,6 +258,7 @@
         if (eventTarget instanceof EventTarget) {
             eventTarget.addEventListener(String(eventType), function(event) {
                 self.contentDocument.body.style.backgroundColor = this.value;
+                self.currentBackgroundColor = this.value;
                 self.pushHistory();
             }, false);
         }
@@ -773,6 +776,14 @@
             this.contentDocument.body.textContent = this.contentDocument.body.innerHTML;
             this.editMode = BeautifulEditor.EDIT_MODES.TEXT;
         }
+    };
+
+    /**
+     * This method exports HTML.
+     * @return {string} This is returned as HTML string.
+     */
+    BeautifulEditor.prototype.export = function() {
+        return '<div style="background-color: ' + this.currentBackgroundColor + ';">' + this.contentDocument.body.innerHTML + '</div>';
     };
 
     // Export
