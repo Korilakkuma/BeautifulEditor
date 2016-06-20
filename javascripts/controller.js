@@ -28,6 +28,7 @@
         beautifulEditor.strikeThrough(document.getElementById('button-strike-through'), 'click');
         beautifulEditor.subscript(document.getElementById('button-subscript'), 'click');
         beautifulEditor.superscript(document.getElementById('button-superscript'), 'click');
+        beautifulEditor.code(document.getElementById('button-code'), 'click');
         beautifulEditor.indent(document.getElementById('button-indent'), 'click');
         beautifulEditor.outdent(document.getElementById('button-outdent'), 'click');
         beautifulEditor.insertOrderedList(document.getElementById('button-ordered-list'), 'click');
