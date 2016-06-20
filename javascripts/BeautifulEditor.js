@@ -425,6 +425,34 @@
     };
 
     /**
+     * This method adds event listener for code.
+     * @param {EventTarget} eventTarget This argument is the instance of EventTarget.
+     * @param {string} eventType This argument is string for event type.
+     */
+    BeautifulEditor.prototype.code = function(eventTarget, eventType) {
+        var self = this;
+
+        if (eventTarget instanceof EventTarget) {
+            eventTarget.addEventListener(String(eventType), function(event) {
+                var range = self.getRange(0);
+
+                if (range === null) {
+                    return;
+                }
+
+                var code = self.surround('code');
+                var pre  = document.createElement('pre');
+
+                pre.appendChild(code);
+
+                range.insertNode(pre);
+
+                self.pushHistory();
+            }, false);
+        }
+    };
+
+    /**
      * This method adds event listener for indent.
      * @param {EventTarget} eventTarget This argument is the instance of EventTarget.
      * @param {string} eventType This argument is string for event type.
