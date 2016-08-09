@@ -1,0 +1,42 @@
+{
+  "name": "BeautifulEditor",
+  "version": "0.0.0",
+  "description": "HTML5 WYSIWYG Editor Library",
+  "main": "build/BeautifulEditor.min.js",
+  "scripts": {
+    "jshint": "gulp jshint",
+    "compress": "gulp compress",
+    "clean": "gulp clean",
+    "build": "gulp build",
+    "watch": "gulp watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Korilakkuma/BeautifulEditor.git"
+  },
+  "keywords": [
+    "Beautiful Editor",
+    "BeautifulEditor",
+    "BeautifulEditor.js",
+    "JavaScript",
+    "HTML5",
+    "WYSIWYG",
+    "WYSIWYG Editor"
+  ],
+  "author": "Korilakkuma <rilakkuma.san.xjapan@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Korilakkuma/BeautifulEditor/issues"
+  },
+  "homepage": "https://github.com/Korilakkuma/BeautifulEditor",
+  "devDependencies": {
+    "del": "^2.2.1",
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.3",
+    "jshint": "^2.9.1"
+  }
+}
