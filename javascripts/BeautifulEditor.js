@@ -34,12 +34,16 @@
 
         this.editMode = BeautifulEditor.EDIT_MODES.HTML;
 
+        this.range = null;
+
+        /*
         this.range = {
             'startContainer': null,
             'startOffset'   : 0,
             'endContainer'  : null,
             'endOffset'     : 0
         };
+        */
 
         this.histories      = [];
         this.historyPointer = 0;
@@ -108,26 +112,32 @@
             return;
         }
 
+        this.range = range.cloneRange();
+
+        /*
         this.range.startContainer = range.startContainer;
         this.range.startOffset    = range.startOffset;
         this.range.endContainer   = range.endContainer;
         this.range.endOffset      = range.endOffset;
+        */
     };
 
     /**
      * This method reverts range.
      */
     BeautifulEditor.prototype.revertRange = function() {
-        var range = this.contentDocument.createRange();
+        // var range = this.contentDocument.createRange();
 
-        if ((this.range.startContainer !== null) && (this.range.endContainer !== null)) {
+        if (this.range !== null) {
+            /*
             range.setStart(this.range.startContainer, this.range.startOffset);
             range.setEnd(this.range.endContainer, this.range.endOffset);
+            */
 
             var selection = this.getSelection();
 
             selection.removeAllRanges();
-            selection.addRange(range);
+            selection.addRange(this.range);
         }
     };
 
